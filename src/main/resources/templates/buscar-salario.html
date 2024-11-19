@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buscar Salario de Empleado</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Buscar Salario de Empleado</h1>
+        <form th:action="@{/empresa/nominas/salario}" method="post">
+            <div class="form-group">
+                <label for="dni">DNI del Empleado:</label>
+                <input type="text" id="dni" name="dni" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+        
+        <div th:if="${salario != null}">
+            <h4>Salario del Empleado: <span th:text="${salario}"></span> €</h4>
+        </div>
+        
+        <div th:if="${error != null}">
+            <p class="text-danger" th:text="${error}"></p>
+        </div>
+
+        <a th:href="@{/}" class="btn btn-secondary mt-3">Volver al inicio</a>
+    </div>
+</body>
+</html>

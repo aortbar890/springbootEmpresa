@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultados de Búsqueda</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Resultados de la Búsqueda</h2>
+        
+        <div th:if="${#lists.isEmpty(empleados)}" class="alert alert-warning mt-3">
+            <p>No se encontraron empleados que coincidan con los criterios.</p>
+        </div>
+        
+        <table class="table" th:if="${#lists.size(empleados) > 0}">
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Sexo</th>
+                    <th>Categoría</th>
+                    <th>Años</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="empleado : ${empleados}">
+                    <td th:text="${empleado.dni}"></td>
+                    <td th:text="${empleado.nombre}"></td>
+                    <td th:text="${empleado.sexo}"></td>
+                    <td th:text="${empleado.categoria}"></td>
+                    <td th:text="${empleado.anyos}"></td>
+                    <td>
+                        <a th:href="@{/empresa/empleados/modificar/{dni}(dni=${empleado.dni})}" class="btn btn-warning">Modificar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+
+        <a th:href="@{/empresa/empleados/buscar}" class="btn btn-secondary mt-3">Volver a la búsqueda</a>
+    </div>
+</body>
+</html>

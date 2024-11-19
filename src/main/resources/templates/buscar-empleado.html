@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buscar Empleado</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Buscar Empleado</h2>
+        <form th:action="@{/empresa/empleados/resultados}" method="get">
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo" class="form-control">
+                    <option value="">Seleccione</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="categoria">Categoría (1-10):</label>
+                <input type="number" id="categoria" name="categoria" class="form-control" min="1" max="10">
+            </div>
+
+            <div class="form-group">
+                <label for="anyos">Años en la Empresa:</label>
+                <input type="number" id="anyos" name="anyos" class="form-control" min="0">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+        <a th:href="@{/}" class="btn btn-secondary mt-3">Volver al inicio</a>
+    </div>
+</body>
+</html>
